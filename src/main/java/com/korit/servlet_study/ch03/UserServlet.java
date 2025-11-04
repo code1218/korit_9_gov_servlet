@@ -29,7 +29,10 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        resp.setContentType("application/json");
         List<User> users = userRepository.findAll();
+        objectMapper.writeValue(resp.getWriter(), users);
     }
 
     @Override
@@ -56,6 +59,7 @@ public class UserServlet extends HttpServlet {
 
         if (!Objects.isNull(foundUser)) {
             ErrorResponse errorResponse = ErrorResponse.builder()
+                    .status(400)
                     .message("이미 존재하는 username입니다.")
                     .build();
             resp.setStatus(400);
@@ -68,6 +72,7 @@ public class UserServlet extends HttpServlet {
         userRepository.insert(userEntity);
 
         SuccessResponse<User> successResponse = SuccessResponse.<User>builder()
+                .status(200)
                 .message("사용자 등록을 완료하였습니다.")
                 .body(userEntity)
                 .build();
