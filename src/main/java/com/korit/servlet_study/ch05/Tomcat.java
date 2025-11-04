@@ -18,18 +18,16 @@ public class Tomcat {
                 "/servlet/b", new ServletB()
         );
 
-        switch (request.getMethod()) {
-            case "GET":
-                servletMap.get(request.getUrl()).doGet(request, response);
-                break;
-            case "POST":
-                servletMap.get(request.getUrl()).doPost(request, response);
-                break;
-        }
+        List<Filter> filters = List.of(
+                new Filter1(),
+                new Filter2(),
+                new Filter3()
+        );
+
+        FilterChain filterChain = new FilterChain(filters, servletMap.get(request.getUrl()), 0);
+        filterChain.doFilter(request, response);
 
         System.out.println(response);
         System.out.println("응답");
-
-
     }
 }
