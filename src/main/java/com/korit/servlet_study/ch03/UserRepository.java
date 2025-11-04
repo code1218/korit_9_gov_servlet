@@ -3,6 +3,7 @@ package com.korit.servlet_study.ch03;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class UserRepository {
     private static UserRepository instance;
@@ -26,9 +27,12 @@ public class UserRepository {
     }
 
     public User findByUsername(String username) {
-        return users.stream()
+        Optional<User> userOptional = users.stream()
                 .filter(user -> user.getUsername().equals(username))
-                .findFirst().get();
+                .findFirst();
+
+
+        return null;
     }
 
     public List<User> findAll() {
