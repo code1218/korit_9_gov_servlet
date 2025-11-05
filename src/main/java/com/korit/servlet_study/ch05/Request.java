@@ -7,4 +7,5 @@ public class Request {
     private String url;
     private String method;
     private String data;
+    private String characterEncoding;
 }

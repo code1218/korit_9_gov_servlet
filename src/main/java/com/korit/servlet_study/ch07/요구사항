@@ -1,0 +1,21 @@
+EncodingFilter:
+    요청, 응답 문자 인코딩 -> UTF-8
+BoardServlet
+    URL: /ch07/boards
+    POST:
+        JSON 형식으로 요청 데이터를 받아온다.
+        {
+            "title": "제목1",
+            "content": "내용1",
+            "writer": "작성자1"
+        }
+        Board 객체 정의
+        BoardRepository를 통해 Board 여러개 추가, 조회 가능
+        응답: Response 객체 정의 JSON으로 응답
+        {
+            "message": "게시글 작성 완료"
+        }
+    GET:
+        모든 Board 객체들을 조회
+        응답: Board 리스트를 JSON으로 응답
+

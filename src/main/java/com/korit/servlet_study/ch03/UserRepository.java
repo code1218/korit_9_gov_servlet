@@ -30,7 +30,7 @@ public class UserRepository {
         return users.stream()
                 .filter(user -> user.getUsername().equals(username))
                 .findFirst()
-                .orElseGet(() -> null);
+                .orElse(null);
     }
 
     public User findByUsernameNonOptional(String username) {
