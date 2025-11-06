@@ -21,4 +21,23 @@
         <url-pattern>/ch01/config/age</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>encoding-filter</filter-name>
+        <filter-class>com.korit.servlet_study.ch09.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding-filter</filter-name>
+        <url-pattern>/study/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>security-filter</filter-name>
+        <filter-class>com.korit.servlet_study.ch09.SecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>security-filter</filter-name>
+        <url-pattern>/study/students</url-pattern>
+    </filter-mapping>
+
+
 </web-app>
