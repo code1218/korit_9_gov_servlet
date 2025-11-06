@@ -29,7 +29,6 @@ public class BoardServlet extends HttpServlet {
 
         ObjectMapper om = new ObjectMapper();
         om.writeValue(resp.getWriter(), boards);
-
     }
 
     @Override
