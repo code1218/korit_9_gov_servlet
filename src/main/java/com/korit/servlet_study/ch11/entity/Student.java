@@ -1,5 +1,6 @@
 package com.korit.servlet_study.ch11.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 

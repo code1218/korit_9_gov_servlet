@@ -2,8 +2,9 @@ package com.korit.servlet_study.ch11.dto;
 
 import com.korit.servlet_study.ch11.entity.Student;
 import lombok.Data;
+import lombok.Setter;
 
-@Data
+@Setter
 public class StudentDto {
     private String name;
     private String phone;

@@ -3,8 +3,10 @@ package com.korit.servlet_study.ch11;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korit.servlet_study.ch11.dao.StudentDao;
 import com.korit.servlet_study.ch11.dto.StudentDto;
+import com.korit.servlet_study.ch11.entity.Student;
 import com.korit.servlet_study.ch11.service.StudentService;
 import com.korit.servlet_study.ch11.util.DBConnectionMgr;
+import lombok.AllArgsConstructor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +29,8 @@ public class StudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StudentDto studentDto = objectMapper.readValue(req.getReader(), StudentDto.class);
-        studentService.save(studentDto);
+        Student savedStudent = studentService.save(studentDto);
+        objectMapper.writeValue(resp.getWriter(), savedStudent);
     }
 
 }
