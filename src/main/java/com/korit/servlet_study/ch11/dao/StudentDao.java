@@ -32,7 +32,7 @@ public class StudentDao {
             ps.setString(6, student.getMajorType());
             ps.setString(7, student.getAdmissionYear());
 
-            if (!ps.execute()) {
+            if (ps.executeUpdate() < 1) {
                 throw new SQLException();
             }
 
